@@ -22,3 +22,7 @@
    ### the pipeline will run and will create a docker image for the app then will deploy it on kubernetes cluster using: 
       - #### Deployment yaml file
       - #### NodePort Service yaml file
+## Now you can access the app on your browser using the following url:
+```
+http://<master_ip>:30007
+```
