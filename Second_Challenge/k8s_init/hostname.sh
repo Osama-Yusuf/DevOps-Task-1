@@ -6,6 +6,8 @@
 # 3. ansible.cfg - contains rules for easier execution for ansible
 # 4. k8s_init.sh - contains the list of commands to be executed on all nodes to initialze the cluster
 # 5. playbook.yml - ansible playbook to to copy hosts file to each node and execute k8s_init.sh
+# 6. token.sh - contains the command to get the token to join the cluster (created on master node and fetched from master node to be used on worker nodes)
+
 
 read -p "Do you want to provision ec2's (Y/N): " user_name
 

@@ -1,5 +1,4 @@
 // pull code from gitlab then build app then push it to dockerhub then deploy it to kubernetes
-
 pipeline {
     agent any
     stages {
