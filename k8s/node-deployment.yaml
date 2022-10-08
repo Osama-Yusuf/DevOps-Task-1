@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: node-test
+  name: node-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-test-pod
+  template:
+    metadata:
+      labels:
+        app: node-test-pod
+    spec:
+      containers:
+      - name: node-test
+        image: 95osama123/frontend:latest
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always
