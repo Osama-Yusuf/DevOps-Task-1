@@ -10,6 +10,7 @@ pipeline {
         stage('Build and push app to dockerhub') {
             steps {
                 sh 'docker build . -t 95osama123/frontend:latest'
+                sh 'echo $dockerhub_PSW | docker login -u $dockerhub_usr --password-stdin'
                 sh 'docker push 95osama123/frontend:latest'
             }
         }
