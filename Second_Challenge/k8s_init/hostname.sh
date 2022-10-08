@@ -271,13 +271,12 @@ tee -a playbook.yml > /dev/null <<EOT
         kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
         rm -f /home/$user_name/token.sh
 
-- name: add user to docker group 
+- name: runing jenkins as a docker container 
   hosts: master
   tasks:
-    - name: add user to docker group
+    - name: run jenkins as a docker container on port 8080
       shell: |
-        sudo usermod -aG docker $user_name
-        newgrp docker && exit
+        docker run -d --name jenkins -p 8080:8080 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
 
 EOT
 

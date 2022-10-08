@@ -1,0 +1,24 @@
+// pull code from gitlab then build app then push it to dockerhub then deploy it to kubernetes
+
+pipeline {
+    agent any
+    stages {
+        stage('Pull code from git hub') {
+            steps {
+                git 'https://gitlab.com/osama9mohamed5/devops-task-1.git'
+            }
+        }
+        stage('Build and push app to dockerhub') {
+            steps {
+                sh 'docker build . -t 95osama123/frontend:latest'
+                sh 'docker push 95osama123/frontend:latest'
+            }
+        }
+        stage('Deploy to kubernetes') {
+            steps {
+                sh 'kubectl apply -f k8s/node-deployment.yaml'
+                sh 'kubectl apply -f k8s/nodeport.yaml'
+            }
+        }
+    }
+}
