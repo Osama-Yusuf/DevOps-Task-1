@@ -18,7 +18,7 @@
    ```
    http://<master_ip>:8080
    ```
-   ### Then create a new pipeline & copy Jenkinsfile script then paste it in pipeline cgroovy script section then click on build now
+   ### Then create a new pipeline & copy Jenkinsfile script then paste it in pipeline groovy script section then click on build now
    ### the pipeline will run and will create a docker image for the app then will deploy it on kubernetes cluster using: 
       - #### Deployment yaml file
       - #### NodePort Service yaml file
