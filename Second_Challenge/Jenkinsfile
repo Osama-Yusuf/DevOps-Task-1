@@ -14,7 +14,7 @@ pipeline {
                 dir("/home/ubuntu/workspace/pipeline/devops-task-1/Second_Challenge") {
                     sh "pwd"
                     sh 'docker build . -t 95osama123/frontend:latest'
-                    sh 'docker login -u 95osama123 -p 147896325@Osa'
+                    sh 'docker login -u user -p pass'
                     sh 'docker push 95osama123/frontend:latest'
                 }
             }
