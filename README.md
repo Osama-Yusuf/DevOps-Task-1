@@ -24,5 +24,5 @@
       - #### NodePort Service yaml file
 ## Now you can access the app on your browser using the following url:
 ```
-http://<master_ip>:30007
+http://<worker_ip>:30007
 ```
