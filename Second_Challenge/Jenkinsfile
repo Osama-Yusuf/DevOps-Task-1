@@ -1,23 +1,31 @@
-// pull code from gitlab then build app then push it to dockerhub then deploy it to kubernetes
 pipeline {
-    agent any
+    agent {
+        node { label 'master' }
+    }
     stages {
         stage('Pull code from git hub') {
             steps {
-                git 'https://gitlab.com/osama9mohamed5/devops-task-1.git'
+                sh "pwd"
+                sh 'git clone https://gitlab.com/osama9mohamed5/devops-task-1.git'
             }
         }
         stage('Build and push app to dockerhub') {
             steps {
-                sh 'docker build . -t 95osama123/frontend:latest'
-                sh 'echo $dockerhub_PSW | docker login -u $dockerhub_usr --password-stdin'
-                sh 'docker push 95osama123/frontend:latest'
+                dir("/home/ubuntu/workspace/pipeline/devops-task-1/Second_Challenge") {
+                    sh "pwd"
+                    sh 'docker build . -t 95osama123/frontend:latest'
+                    sh 'docker login -u 95osama123 -p 147896325@Osa'
+                    sh 'docker push 95osama123/frontend:latest'
+                }
             }
         }
         stage('Deploy to kubernetes') {
             steps {
-                sh 'kubectl apply -f k8s/node-deployment.yaml'
-                sh 'kubectl apply -f k8s/nodeport.yaml'
+                dir("/home/ubuntu/workspace/pipeline/devops-task-1/Second_Challenge/k8s/") {
+                    sh "pwd"
+                    sh 'kubectl apply -f nodeport.yaml'
+                    sh 'kubectl apply -f node-deployment.yaml'
+                }
             }
         }
     }
