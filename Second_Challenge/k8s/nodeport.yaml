@@ -7,6 +7,6 @@ spec:
   selector:
     app: node-test-pod
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 3000
+      targetPort: 3000
       nodePort: 30007
